@@ -1,0 +1,65 @@
+.auru-slideshow {
+	position: relative;
+}
+.auru-slide {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.auru-previous {
+	left: 100%;
+}
+.auru-hidden {
+	display: none;
+}
+.auru-from-left,
+.auru-from-right,
+.auru-to-left,
+.auru-to-right {
+	animation-duration: 1s;
+}
+.auru-from-left {
+	animation-name: auru-from-left;
+}
+.auru-from-right {
+	animation-name: auru-from-right;
+}
+.auru-to-left {
+	animation-name: auru-to-left;
+}
+.auru-to-right {
+	animation-name: auru-to-right;
+}
+
+@keyframes auru-from-left {
+	from {
+		left: -100%;
+	}
+	to {
+		left: 0;
+	}
+}
+@keyframes auru-from-right {
+	from {
+		left: 100%;
+	}
+	to {
+		left: 0;
+	}
+}
+@keyframes auru-to-left {
+	from {
+		left: 0;
+	}
+	to {
+		left: -100%;
+	}
+}
+@keyframes auru-to-right {
+	from {
+		left: 0;
+	}
+	to {
+		left: 100%;
+	}
+}

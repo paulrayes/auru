@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+
+	<title>Auru Demo</title>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+	<!--[if lt IE 9]>
+		<script>
+			document.createElement('header');
+			document.createElement('nav');
+			document.createElement('section');
+			document.createElement('article');
+			document.createElement('aside');
+			document.createElement('footer');
+		</script>
+	<![endif]-->
+
+	<link rel="stylesheet" href="../node_modules/normalize.css/normalize.css" />
+	<link href='https://fonts.googleapis.com/css?family=Lato:300,400,400italic' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="../auru.css" />
+	<link rel="stylesheet" href="style.css" />
+	<script src="../build/auru.js"></script>
+</head>
+<body>
+</body>
+
+
+
+<section class="auru-narrow">
+	<h1>auru</h1>
+	<p>Slideshow module designed for modern websites. Light-weight dependencies, no jQuery or other frameworks, fully customizable, and completely destructable when no longer needed.</p>
+	<p style="text-align:center">
+		<a href="#">GitHub</a> |
+		<a href="#">npm</a> |
+		<a href="#">Download</a>
+	</p>
+</section>
+
+
+
+<section class="auru-narrow">
+	<h2>Installation</h2>
+	<p>Use npm, it is awesome:</p>
+	<pre><code>npm install auru</code></pre>
+	<p>Alternatively get the "build" folder from GitHub and put the files inside somewhere in your project.</p>
+	<h2>Usage</h2>
+	<p>If you use webkit or browserify:</p>
+	<pre><code>var Auru = require('auru');</code></pre>
+	<p>Or use the standalone build which will expose the <code>Auru</code> global:</p>
+	<pre><code>&lt;script src="auru.js" /&gt;</code></pre>
+	<p>This page is un-minified, just right-click and select "View Page Source" to see how any of these examples work.</p>
+</section>
+
+
+
+<section>
+	<h2>Full width, default settings</h2>
+	<div id="auru1">
+		<img src="5299955413_21d718f881_b.jpg" />
+		<img src="14027112941_14dcc33320_k.jpg" />
+		<img src="5332128557_31104680fa_b.jpg" />
+		<img src="8447868825_adf6e7dc95_k.jpg" />
+	</div>
+	<style>
+		#auru1 {
+			width: 100%;
+			margin-bottom: 55.56%;
+		}
+		#auru1 img {
+			width: 100%;
+			height: auto;
+		}
+	</style>
+	<script>
+		var auru1 = new Auru(document.getElementById('auru1'));
+	</script>
+</section>
+
+
+
+<section class="auru-narrow">
+	<h2>Limited width, manual navigation, events</h2>
+	<p>Check your browser's console to see events as they are emitted. Also try swiping left or right on a touch device.</p>
+	<p>Current slide: <span id="auru2index">1</span></p>
+	<p style="text-align:center;" class="navigation">
+		<a href="javascript:auru2.previous()" style="float: left;">&lt;</a>
+		<a href="javascript:auru2.goToSlide(0)"> 1 </a>
+		<a href="javascript:auru2.goToSlide(1)"> 2 </a>
+		<a href="javascript:auru2.goToSlide(2)"> 3 </a>
+		<a href="javascript:auru2.goToSlide(3)"> 4 </a>
+		<a href="javascript:auru2.next()" style="float: right;">&gt;</a>
+	</p>
+	<div id="auru2">
+		<img src="5299955413_21d718f881_b.jpg" />
+		<img src="14027112941_14dcc33320_k.jpg" />
+		<img src="5332128557_31104680fa_b.jpg" />
+		<img src="8447868825_adf6e7dc95_k.jpg" />
+	</div>
+	<style>
+		.navigation a {
+			padding: 3px 12px;
+			margin: 0 3px;
+			background: rgba(255, 255, 255, 0.1);
+			text-decoration: none;
+		}
+		.navigation a:hover {
+			background: rgba(255, 255, 255, 0.3);
+		}
+		#auru2 {
+			max-width: 900px;
+			padding-bottom: 55.56%;
+		}
+		#auru2 img {
+			width: 100%;
+			height: auto;
+		}
+	</style>
+	<script>
+		var auru2 = new Auru(
+			document.getElementById('auru2'),
+			{
+				slideDuration: false,
+				touch: true
+			}
+		);
+		auru2.on('change', function() {
+			document.getElementById('auru2index').innerHTML = auru2.currentIndex + 1;
+			console.log('changed to slide ' + (auru2.currentIndex + 1));
+		});
+		auru2.on('tap', function() {
+			console.log('tapped slide ' + (auru2.currentIndex + 1));
+		});
+	</script>
+</section>
+
+
+
+<section class="auru-narrow">
+	<div class="auru3container">
+		<div id="auru3">
+			<div>
+				<h2>Non-image slideshow</h2>
+				<p>Slides don't have to be images.</p>
+				<p>This slideshow will progress automatically until you interact with it.</p>
+			</div>
+			<div>
+				<h2>Slide 2</h2>
+				<p>You can have interactive elements inside a slide, like hyperlinks:</p>
+				<p><a href="javascript:auru3.stop();alert('You clicked me!')">Click Me!</a></p>
+			</div>
+			<div>
+				<h2>Slide 3</h2>
+				<p>The last slide is an image, you can mix element types.</p>
+				<p>Swiping on touch devices still works, too.</p>
+			</div>
+			<img src="14027112941_14dcc33320_k.jpg" />
+		</div>
+		<div class="navigation">
+			<a href="javascript:auru3.stop();auru3.previous()" class="auru3previous">&lt;</a>
+			<a href="javascript:auru3.stop();auru3.next()" class="auru3next">&gt;</a>
+		</div>
+	</div>
+	<style>
+		#auru3 {
+			max-width: 900px;
+			padding-bottom: 55.56%;
+		}
+		#auru3 > * {
+			width: 100%;
+			height: 100%;
+		}
+		#auru3 p {
+			font-size: 0.82em;
+			margin: 6px 70px;
+			line-height: 140%;
+		}
+		.auru3container {
+			position: relative;
+		}
+		.navigation .auru3previous,
+		.navigation .auru3next {
+			margin: 0;
+			padding: 36px 24px;
+			position: absolute;
+			top: 50%;
+			margin-top: -36px;
+		}
+		.auru3previous {
+			left: 0;
+		}
+		.auru3next {
+			right: 0;
+		}
+	</style>
+	<script>
+		var auru3 = new Auru(
+			document.getElementById('auru3'),
+			{
+				touch: true
+			}
+		);
+		auru3.on('swipe', auru3.stop);
+	</script>
+</section>
+
+
+
+<section class="auru-narrow">
+	<h2>Custom animation</h2>
+	<div id="auru4">
+		<img src="5299955413_21d718f881_b.jpg" />
+		<img src="14027112941_14dcc33320_k.jpg" />
+		<img src="5332128557_31104680fa_b.jpg" />
+		<img src="8447868825_adf6e7dc95_k.jpg" />
+	</div>
+	<style>
+		#auru4 {
+			width: 100%;
+			margin-bottom: 55.56%;
+		}
+		#auru4 img {
+			width: 100%;
+			height: auto;
+		}
+		#auru4 .auru-from-left,
+		#auru4 .auru-from-right,
+		#auru4 .auru-to-left,
+		#auru4 .auru-to-right {
+			animation-duration: 1s;
+		}
+		#auru4 .auru-from-left {
+			animation-name: auru4-in;
+		}
+		#auru4 .auru-from-right {
+			animation-name: auru4-in;
+		}
+		#auru4 .auru-to-left {
+			animation-name: auru4-out;
+		}
+		#auru4 .auru-to-right {
+			animation-name: auru4-out;
+		}
+
+		@keyframes auru4-in {
+			from {
+				left: 0;
+				opacity: 0;
+			}
+			to {
+				left: 0;
+				opacity: 1;
+			}
+		}
+		@keyframes auru4-out {
+			from {
+				left: 0;
+				opacity: 1;
+			}
+			to {
+				left: 0;
+				opacity: 0;
+			}
+		}
+	</style>
+	<script>
+		var auru4 = new Auru(document.getElementById('auru4'));
+	</script>
+</section>
+
+
+
+<section class="auru-narrow">
+<h2>Photo Credits</h2>
+<p>In order of appearance: (yes there are multiple photos with the same title, that is not a typo)</p>
+<p>
+	<a href="https://www.flickr.com/photos/timo_w2s/5299955413/in/photolist-95kE6B-ehTS2-kqoVHe-98eGvQ-91XwJR-kqoVCV-gHEjTW-drQxB7-ehx6hQ-jFafQm-9qaNuu-kXbEKD-yzTRHQ-kXdrZU-98by3Z-reBmcP-7NzVvx-ehTVA-h8C7Nm-ebELgB-rTQESs-pbTpzS-kqqvGW-7NDUoy-dWQbBM-bow6B7-95kEen-bBCH9P-8GYc6S-7NzVAV-95kEoi-dYuB5K-mzJHPp-bnzzyC-9oFRQj-e1UWC1-rpgkFq-kgXR17-bH6N3P-xqsxCg-98bxY4-98by7T-dSvwxz-bG2NFP-kqoVGn-dZoBJj-dYAjyL-i7Fddd-nnNSSa-bow6PE">"Northern Lights"</a> by Timo Newton-Syms: <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a><br />
+	<a href="https://www.flickr.com/photos/kelvinlls/14027112941/in/photolist-nnwBYR-p1J2jz-8pwrkv-dSvx5M-8JN2Jc-oV5vdL-fnST8m-ebLpPC-8KtqdM-kXdB4q-t8qTYc-drQxD7-qRJhBS-4qKfpx-dWMMxE-ehTQr-47LtY7-pbmREE-kxPtyi-q52C3b-tnxUW3-gethcm-95kE6B-ehTS2-kqoVHe-98eGvQ-91XwJR-kqoVCV-gHEjTW-drQxB7-ehx6hQ-jFafQm-9qaNuu-kXbEKD-yzTRHQ-kXdrZU-98by3Z-reBmcP-7NzVvx-ehTVA-h8C7Nm-ebELgB-rTQESs-pbTpzS-kqqvGW-7NDUoy-dWQbBM-bow6B7-95kEen-bBCH9P">"Aurora Borealis in Kakslauttanen, Finland"</a> by Kelvin Lim: <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a><br />
+	<a href="https://www.flickr.com/photos/timo_w2s/5332128557/in/photolist-98by3Z-reBmcP-7NzVvx-ehTVA-h8C7Nm-ebELgB-rTQESs-pbTpzS-kqqvGW-7NDUoy-dWQbBM-bow6B7-95kEen-bBCH9P-8GYc6S-7NzVAV-95kEoi-dYuB5K-mzJHPp-bnzzyC-9oFRQj-e1UWC1-rpgkFq-kgXR17-bH6N3P-xqsxCg-98bxY4-98by7T-dSvwxz-bG2NFP-kqoVGn-dZoBJj-dYAjyL-i7Fddd-nnNSSa-bow6PE-bAuqW2-ehmXiq-gSgNZ7-kqoVDB-zw7pAN-nnwsac-nnwApZ-nkLfXm-nnwoTc-yyWa7C-mzNJGC-zwkKne-kXd1jq-dWVR7b">"Northern Lights"</a> by Timo Newton-Syms: <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a><br />
+	<a href="https://www.flickr.com/photos/elgentscho/8447868825/in/photolist-dSvx5M-8JN2Jc-oV5vdL-fnST8m-ebLpPC-8KtqdM-kXdB4q-t8qTYc-drQxD7-qRJhBS-4qKfpx-dWMMxE-ehTQr-47LtY7-pbmREE-kxPtyi-q52C3b-tnxUW3-gethcm-95kE6B-ehTS2-kqoVHe-98eGvQ-91XwJR-kqoVCV-gHEjTW-drQxB7-ehx6hQ-jFafQm-9qaNuu-kXbEKD-yzTRHQ-kXdrZU-98by3Z-reBmcP-7NzVvx-ehTVA-h8C7Nm-ebELgB-rTQESs-pbTpzS-kqqvGW-7NDUoy-dWQbBM-bow6B7-95kEen-bBCH9P-8GYc6S-7NzVAV-95kEoi">"Aurora Borealis"</a> by Andi Gentsch: <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a>
+</p>
+</section>
+
+
+
+<small><p style="text-align:center">
+	Copyright &copy; 2015 Paul Rayes<br />
+	Code licensed under Apache-2.0
+</p></small>
+
+
+
+</body>
+</html>

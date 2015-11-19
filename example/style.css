@@ -1,0 +1,81 @@
+/*
+darker
+#13004A
+#513188
+#7F5FB6
+#AC8CE3
+#DABAFF
+#F1D1FF
+lighter
+*/
+
+// Fix borders and such so they behave sanely
+*,
+*:after,
+*:before {
+	box-sizing: border-box;
+}
+
+body {
+	background: #7f5fb6;
+	color: #13004A;
+	font-family: 'Lato', sans-serif;
+	font-size: 18px;
+	tab-size: 3;
+	line-height: 160%;
+	padding-bottom: 9px;
+}
+section {
+	background: #AC8CE3;
+	padding: 0;
+	margin: 24px 0;
+	overflow: hidden;
+}
+h1 {
+	font-size: 42px;
+	margin: .67em 18px;
+	font-family: 'Lato', sans-serif;
+	font-weight: 300;
+	text-align: center;
+}
+h2 {
+	font-size: 30px;
+	margin: .67em 18px;
+	font-family: 'Lato', sans-serif;
+	font-weight: 300;
+}
+p {
+	margin: 18px;
+}
+a {
+	color: #513188;
+	transition: all 0.12s;
+}
+a:hover, a:active, a:focus {
+	color: #000;
+	transition: all 0.06s;
+}
+code {
+	white-space: pre;
+	background: #DABAFF;
+	padding: 0 3px;
+}
+pre {
+	white-space: pre-wrap;
+	background: #DABAFF;
+	padding: 9px 18px;
+}
+small {
+	font-size: 0.82em;
+	line-height: 140%;
+}
+.auru-narrow {
+	max-width: 900px;
+	margin: 24px;
+}
+@media(min-width: 948px) {
+	.auru-narrow {
+		max-width: 900px;
+		margin: 24px auto;
+	}
+}
