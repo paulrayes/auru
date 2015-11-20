@@ -12,9 +12,16 @@
     "buildexample": "mkdir -p examplebuild && cp example/* examplebuild && cp build/auru.min.js examplebuild && cp node_modules/normalize.css/normalize.css examplebuild && cp auru.css examplebuild",
     "buildexample:watch": "npm run buildexample && gaze 'npm run buildexample' '*', 'example/*' 'build/auru.min.js'"
   },
-  "keywords": [],
   "author": "Paul Rayes <paul@rayes.io> (http://www.rayes.io/)",
   "license": "Apache-2.0",
+  "homepage": "http://rayes.io/auru/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/paulrayes/auru.git"
+  },
+  "keywords": [
+    "slideshow"
+  ],
   "dependencies": {
     "eventemitter3": "1.1.1",
     "hammerjs": "2.0.4"
@@ -25,7 +32,7 @@
     "babel-plugin-add-module-exports": "0.1.1",
     "babel-preset-es2015": "6.1.18",
     "eslint": "1.9.0",
-    "gaze-cli": "^0.2.0",
+    "gaze-cli": "0.2.0",
     "webpack": "1.12.6"
   }
 }
