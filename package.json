@@ -5,9 +5,12 @@
   "main": "auru.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
+    "build": "webpack && npm run buildexample",
     "lint": "eslint auru.js",
-    "watch": "webpack --watch"
+    "lint:watch": "eslint auru.js && gaze 'eslint auru.js' 'auru.js'",
+    "watch": "npm run lint:watch & webpack --watch & npm run buildexample:watch",
+    "buildexample": "mkdir -p examplebuild && cp example/* examplebuild && cp build/auru.min.js examplebuild && cp node_modules/normalize.css/normalize.css examplebuild && cp auru.css examplebuild",
+    "buildexample:watch": "npm run buildexample && gaze 'npm run buildexample' '*', 'example/*' 'build/auru.min.js'"
   },
   "keywords": [],
   "author": "Paul Rayes <paul@rayes.io> (http://www.rayes.io/)",
@@ -22,6 +25,7 @@
     "babel-plugin-add-module-exports": "0.1.1",
     "babel-preset-es2015": "6.1.18",
     "eslint": "1.9.0",
+    "gaze-cli": "^0.2.0",
     "webpack": "1.12.6"
   }
 }

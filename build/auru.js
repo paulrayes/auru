@@ -68,11 +68,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var EventEmitter = __webpack_require__(2);
+	var EventEmitter = __webpack_require__(1);
 	var Hammer;
-	var touchEnabled = typeof AURU_TOUCH_ENABLED === 'undefined' || AURU_TOUCH_ENABLED === true;
-	if (touchEnabled) {
-		Hammer = __webpack_require__(3);
+	var touchEnabled = "boolean" === 'undefined' || (true) === true;
+	// webkit/uglify don't understand the variable above for dead code removal, so it's repeated in the if statement
+	if (true) {
+		Hammer = __webpack_require__(2);
 	}
 	
 	var defaultOptions = {
@@ -287,8 +288,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 1 */,
-/* 2 */
+/* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict'
@@ -548,7 +548,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 3 */
+/* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -2995,7 +2995,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        prefixed: prefixed
 	    });
 	
-	    if (( false ? 'undefined' : _typeof(__webpack_require__(4))) == TYPE_FUNCTION && __webpack_require__(5)) {
+	    if (( false ? 'undefined' : _typeof(__webpack_require__(3))) == TYPE_FUNCTION && __webpack_require__(4)) {
 	        !(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
 	            return Hammer;
 	        }.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -3007,14 +3007,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	})(window, document, 'Hammer');
 
 /***/ },
-/* 4 */
+/* 3 */
 /***/ function(module, exports) {
 
 	module.exports = function() { throw new Error("define cannot be used indirect"); };
 
 
 /***/ },
-/* 5 */
+/* 4 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;

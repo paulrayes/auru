@@ -3,7 +3,8 @@
 var EventEmitter = require('eventemitter3');
 var Hammer;
 var touchEnabled = typeof AURU_TOUCH_ENABLED === 'undefined' || AURU_TOUCH_ENABLED === true;
-if (touchEnabled) {
+// webkit/uglify don't understand the variable above for dead code removal, so it's repeated in the if statement
+if (typeof AURU_TOUCH_ENABLED === 'undefined' || AURU_TOUCH_ENABLED === true) {
 	Hammer = require('hammerjs');
 }
 
